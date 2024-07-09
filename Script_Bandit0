@@ -1,0 +1,50 @@
+#!/bin/bash 
+
+  
+# Variables de conexión SSH 
+
+bandit_user="bandit0" 
+
+bandit_host="bandit.labs.overthewire.org" 
+
+bandit_port="2220" 
+
+  
+
+# Comando SSH para listar archivos en el directorio y obtener la contraseña del siguiente nivel 
+
+ssh_command="ssh $bandit_user@$bandit_host -p $bandit_port 'ls -la && cat readme | grep \"The password you are looking\"'" 
+
+  #
+
+# Ejecutar el comando SSH y capturar la salida 
+
+ssh_output=$(eval $ssh_command) 
+
+  
+
+# Mostrar la salida de SSH (listado de archivos y línea con la contraseña) 
+
+echo "$ssh_output" 
+
+  
+
+# Verificar si se encontró la línea deseada 
+
+password_line=$(echo "$ssh_output" | grep "The password you are looking") 
+
+if [ -n "$password_line" ]; then 
+
+    # Extraer la contraseña del siguiente nivel (suponiendo que está después de la línea deseada) 
+
+    next_password=$(echo "$password_line" | cut -d ' ' -f 5) 
+
+    # Mostrar la contraseña del siguiente nivel 
+
+    echo "No se olvide copiar la contraseña que tenemos arriba para el siguiente nivel" 
+
+else 
+
+    echo "No se encontró la línea 'The password you are looking' en la salida del comando SSH." 
+
+fi 
