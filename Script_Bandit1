@@ -1,0 +1,28 @@
+#!/usr/bin/expect 
+
+#Declaración de variables. 
+
+set host "bandit.labs.overthewire.org"
+set port 2220
+set user "bandit1"
+set password "ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If"
+
+#Iniciar la sesión en SSH
+spawn ssh -p $port $user@$host
+
+#Manejar la solicitud de contraseña.
+expect "password:"
+send "$password\r"
+
+#Esperar al prompt
+expect "$ "
+
+#Ejecutar el comando para leer el archivo ´-´
+send "cat ./-\r"
+
+#Capturar la salida
+expect "$ "
+
+#Salida del script
+send "exit\r"
+expect eof
