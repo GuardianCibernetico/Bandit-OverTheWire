@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Define variables
+
+USER="bandit2"
+HOST="bandit.labs.overthewire.org"
+PORT="2220"
+PASSWORD="263JGJPfgU6LtdEvgfWU1XP5yac29mFx"
+
+# Ejecuta los comandos en el servidor y captura la contraseña en una variable
+
+PASSWORD_NEXT_LEVEL=$(sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no $USER@$HOST -p $PORT << 'EOF'
+# Leer el contenido del archivo con espacios en el nombre
+cat "spaces in this filename"
+EOF
+)
+
+# Mostrar la contraseña obtenida
+echo "La contraseña para el siguiente nivel es: $PASSWORD_NEXT_LEVEL"
