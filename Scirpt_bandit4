@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#Definir el nombre de usuario y servidores junto a la contraseña nivel 3
+USER="bandit4"
+SERVER="bandit.labs.overthewire.org"
+PORT="2220"
+PASSWORD="2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ"
+
+#Ejecutar el comando del servidor remoto.
+sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no $USER@$SERVER -p $PORT << 'EOF'
+
+#Cambiar directorio
+cd ~/inhere
+
+#Mostar el contenido del archivo
+cat ./-file07
+EOF
