@@ -1,1 +1,21 @@
+#!/bin/bash
 
+#definir las variables
+user="bandit5"
+host="bandit.labs.overthewire.org"
+port="2220"
+password="4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw"
+
+#conectarnos al serviror usando las ssh y ejecucion del comando
+sshpass -p "$password" ssh -p "$port" $user@$host << EOF
+
+#cambiar al directorio inhere
+cd inhere
+
+#Encontrar el archivo con tamaño de 1033 bytes. 
+FILE=\$(find . -type f -size 1033c)
+
+#Muestre la contraseña 
+cat \$FILE
+
+EOF
