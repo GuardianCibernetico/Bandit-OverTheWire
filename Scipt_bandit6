@@ -1,0 +1,25 @@
+!/bin/bash
+
+#Definir las variables
+user="bandit6"
+host="bandit.labs.overthewire.org"
+port="2220"
+password="HWasnPhtq9AVKe0dmk45nxy20cvUa6EG"
+
+#Conectarnos al servidor y buscar el archivo. 
+sshpass -p "$password" ssh -p "$port" "$user@$host" << 'ENDSSH'
+
+#Buscar el archivo que es propiedad el usuario bandit7, grupo bandit6 y cumplir condiciones
+file=$(find / -user bandit7 -group bandit6 -size 33c 2>/dev/null)
+
+#Si encuentra el arvhivo, muestre su ruta y contenido
+if [ -n "$file" ]; then
+echo "Archivo encontrado en: $file"
+echo "Contenido del archivo:"
+cat "$file"
+
+else
+echo "no se ha encontrado ningun archivo con los datos que has metido"
+
+fi 
+ENDSSH
