@@ -1,0 +1,27 @@
+{
+  "version": "2.3.0",
+  "summary": {
+    "title": "Ejercicio tema 4",
+    "owner": "GuardianCibernetico",
+    "description": "Login Web",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Login en una web",
+        "diagramType": "STRIDE",
+        "placeholder": "Descripción de nuevo diagrama STRIDE",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.3.0",
+        "cells": [],
+        "description": "Login en una Web"
+      }
+    ],
+    "diagramTop": 1,
+    "reviewer": "Álvaro",
+    "threatTop": 0
+  }
+}
